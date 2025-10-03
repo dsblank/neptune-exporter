@@ -14,8 +14,20 @@
 # limitations under the License.
 
 
+from neptune_exporter.exporters.neptune3 import Neptune3Exporter
+from neptune_exporter.manager import ExportManager
+from neptune_exporter.storage.parquet import ParquetStorage
+from pathlib import Path
+
+
 def main() -> None:
-    print("Hello from neptune!")
+    export_manager = ExportManager(
+        exporter=Neptune3Exporter(),
+        storage=ParquetStorage(base_path=Path("./examples")),
+    )
+    export_manager.run(
+        project_ids=["michal.sosnicki/earth"],
+    )
 
 
 if __name__ == "__main__":

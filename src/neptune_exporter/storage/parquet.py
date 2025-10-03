@@ -14,8 +14,17 @@
 # limitations under the License.
 
 from pathlib import Path
+import pyarrow as pa
 
 
 class ParquetStorage:
     def __init__(self, base_path: Path):
         self.base_path = base_path
+        self._initialize_directory()
+
+    def _initialize_directory(self) -> None:
+        self.base_path.mkdir(parents=True, exist_ok=True)
+
+    def save(self, project_id: str, data: pa.Table) -> None:
+        table_path = self.base_path / f"{project_id}.parquet"
+        pa.write_table(data, table_path)

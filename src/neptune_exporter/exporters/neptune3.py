@@ -15,17 +15,14 @@
 
 import pyarrow as pa
 import pandas as pd
-from typing import Generator, NewType, Optional, Sequence
+from typing import Generator, Optional, Sequence
 from pathlib import Path
 import neptune_query as nq
 from neptune_query import runs as nq_runs
 from neptune_query.filters import Attribute, AttributeFilter
 
 from neptune_exporter import model
-
-
-ProjectId = NewType("ProjectId", str)
-RunId = NewType("RunId", str)
+from neptune_exporter.exporters import ProjectId, RunId
 
 
 _PARAMETER_TYPES: Sequence[str] = (
@@ -63,11 +60,11 @@ class Neptune3Exporter:
     ) -> list[RunId]:
         return nq_runs.list_runs(project_id, runs)
 
-    def fetch_parameters(
+    def download_parameters(
         self,
         project_id: ProjectId,
         run_ids: list[RunId],
-        attributes: str | Sequence[str],
+        attributes: None | str | Sequence[str],
     ) -> Generator[pa.RecordBatch, None, None]:
         parameters_df = (
             nq_runs.fetch_runs_table(  # index="run", cols="attribute" (=path)
@@ -149,7 +146,7 @@ class Neptune3Exporter:
         self,
         project_id: ProjectId,
         run_ids: list[RunId],
-        attributes: str | Sequence[str],
+        attributes: None | str | Sequence[str],
     ) -> Generator[pa.RecordBatch, None, None]:
         metrics_df = nq_runs.fetch_metrics(  # index=["run", "step"], column="path"
             project=project_id,
@@ -165,7 +162,7 @@ class Neptune3Exporter:
         self,
         project_id: ProjectId,
         run_ids: list[RunId],
-        attributes: str | Sequence[str],
+        attributes: None | str | Sequence[str],
     ) -> Generator[pa.RecordBatch, None, None]:
         series_df = nq_runs.fetch_series(  # index=["run", "step"], column="path"
             project=project_id,
@@ -181,7 +178,7 @@ class Neptune3Exporter:
         self,
         project_id: ProjectId,
         run_ids: list[RunId],
-        attributes: str | Sequence[str],
+        attributes: None | str | Sequence[str],
         destination: Path,
     ) -> Generator[pa.RecordBatch, None, None]:
         files_df = nq_runs.fetch_runs_table(  # index="run", cols="attribute" (=path)
