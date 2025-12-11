@@ -419,7 +419,7 @@ def load(
     log_file: Path,
     no_progress: bool,
     comet_workspace: str | None,
-    comet_api_key: str | None
+    comet_api_key: str | None,
 ) -> None:
     """Load exported Neptune data from parquet files to target platforms (MLflow, W&B, or Comet).
 
@@ -537,14 +537,21 @@ def load(
         )
         loader_name = "W&B"
     elif loader == "comet":
-        if not comet_api_key:
-            import comet_ml
+        import comet_ml
 
+        if not comet_workspace:
+            comet_workspace = comet_ml.config.get_config("comet.workspace")
+            if not comet_workspace:
+                raise click.BadParameter(
+                    "Comet workspace is required when using --loader comet. You can set it as an environment variable COMET_WORKSPACE, provide it with --comet-workspace, or in a ~/.comet.config file."
+                )
+        if not comet_api_key:
             comet_api_key = comet_ml.config.get_config("comet.api_key")
             if not comet_api_key:
                 raise click.BadParameter(
                     "Comet API key is required when using --loader comet. You can set it as an environment variable COMET_API_KEY, provide it with --comet-api-key, or in a ~/.comet.config file"
                 )
+
         data_loader = CometLoader(
             workspace=comet_workspace,
             api_key=comet_api_key,
@@ -566,9 +573,11 @@ def load(
 
     try:
         loader_manager.load(
-            project_ids=[ProjectId(project_id) for project_id in project_ids_list]
-            if project_ids_list
-            else None,
+            project_ids=(
+                [ProjectId(project_id) for project_id in project_ids_list]
+                if project_ids_list
+                else None
+            ),
             runs=[SourceRunId(run_id) for run_id in runs_list] if runs_list else None,
         )
         logger.info(f"{loader_name} loading completed successfully!")
