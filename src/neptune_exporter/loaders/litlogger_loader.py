@@ -84,7 +84,9 @@ class LitLoggerLoader(DataLoader):
 
         # Internal state
         self._logger = logging.getLogger(__name__)
-        self._active_experiment: Optional[Any] = None  # Current litlogger experiment instance
+        self._active_experiment: Optional[Any] = (
+            None  # Current litlogger experiment instance
+        )
         self._current_run_id: Optional[TargetRunId] = None  # ID of run being processed
 
         # Pending experiment info for deferred creation
@@ -218,13 +220,13 @@ class LitLoggerLoader(DataLoader):
         prefix = f"{project_id}/{run_name}/"
 
         if file_path.startswith(prefix):
-            return file_path[len(prefix):]
+            return file_path[len(prefix) :]
 
         # Also try with just run_name in case project_id format differs
         # Path might start with just run_id/
         run_prefix = f"{run_name}/"
         if file_path.startswith(run_prefix):
-            return file_path[len(run_prefix):]
+            return file_path[len(run_prefix) :]
 
         return file_path
 
@@ -393,7 +395,8 @@ class LitLoggerLoader(DataLoader):
                 self.upload_artifacts(run_df, run_id, files_directory, step_multiplier)
 
             # Finalize the experiment (required by LitLogger to complete upload)
-            self._active_experiment.finalize()
+            if self._active_experiment:
+                self._active_experiment.finalize()
 
             # Reset state for next run
             self._active_experiment = None
@@ -451,9 +454,9 @@ class LitLoggerLoader(DataLoader):
             name=self._pending_experiment["experiment_name"],
             teamspace=self.teamspace,
             metadata=metadata,
-            store_step=True,       # Enable step tracking for metrics
-            store_created_at=True, # Store timestamps
-            print_url=False,       # Don't print URL to stdout
+            store_step=True,  # Enable step tracking for metrics
+            store_created_at=True,  # Store timestamps
+            print_url=False,  # Don't print URL to stdout
         )
 
         self._logger.info(
@@ -503,9 +506,14 @@ class LitLoggerLoader(DataLoader):
                 metadata[attr_name] = str(row["string_value"])
             elif row["attribute_type"] == "bool" and pd.notna(row["bool_value"]):
                 metadata[attr_name] = str(bool(row["bool_value"]))
-            elif row["attribute_type"] == "datetime" and pd.notna(row["datetime_value"]):
+            elif row["attribute_type"] == "datetime" and pd.notna(
+                row["datetime_value"]
+            ):
                 metadata[attr_name] = str(row["datetime_value"])
-            elif row["attribute_type"] == "string_set" and row["string_set_value"] is not None:
+            elif (
+                row["attribute_type"] == "string_set"
+                and row["string_set_value"] is not None
+            ):
                 metadata[attr_name] = ",".join(row["string_set_value"])
 
         return metadata
@@ -643,7 +651,7 @@ class LitLoggerLoader(DataLoader):
                 metrics_dict[attr_name] = values
 
         # Upload all metrics in a single batch call
-        if metrics_dict:
+        if metrics_dict and self._active_experiment:
             self._active_experiment.log_metrics_batch(metrics_dict)
 
     # =========================================================================
@@ -703,9 +711,15 @@ class LitLoggerLoader(DataLoader):
                         # For directories (file_set), recursively collect all files inside
                         for child_file in file_path.rglob("*"):
                             if child_file.is_file():
-                                child_rel_path = str(child_file.relative_to(files_base_path))
-                                child_remote_path = self._strip_neptune_path_prefix(child_rel_path)
-                                files_to_upload.append((str(child_file), child_remote_path, False))
+                                child_rel_path = str(
+                                    child_file.relative_to(files_base_path)
+                                )
+                                child_remote_path = self._strip_neptune_path_prefix(
+                                    child_rel_path
+                                )
+                                files_to_upload.append(
+                                    (str(child_file), child_remote_path, False)
+                                )
                 else:
                     self._logger.warning(f"File not found: {file_path}")
 
@@ -755,7 +769,9 @@ class LitLoggerLoader(DataLoader):
                             if pd.notna(row["timestamp"])
                             else None
                         )
-                        tmp_file.write(f"{series_step}; {timestamp}; {row['string_value']}\n")
+                        tmp_file.write(
+                            f"{series_step}; {timestamp}; {row['string_value']}\n"
+                        )
 
                 # Mark as temp file so it gets cleaned up after upload
                 files_to_upload.append((tmp_file.name, remote_path, True))
@@ -793,7 +809,8 @@ class LitLoggerLoader(DataLoader):
 
                                 # Calculate bin widths and centers from edges
                                 bin_widths = [
-                                    edges[i + 1] - edges[i] for i in range(len(edges) - 1)
+                                    edges[i + 1] - edges[i]
+                                    for i in range(len(edges) - 1)
                                 ]
                                 bin_centers = [
                                     (edges[i] + edges[i + 1]) / 2
@@ -816,13 +833,19 @@ class LitLoggerLoader(DataLoader):
 
                                 # Save plot to temp file
                                 step_str = step if step is not None else "none"
-                                remote_path = f"histograms/{attr_name}_step{step_str}.png"
+                                remote_path = (
+                                    f"histograms/{attr_name}_step{step_str}.png"
+                                )
                                 with tempfile.NamedTemporaryFile(
                                     suffix=f"_{attr_name}_step{step_str}.png",
                                     delete=False,
                                 ) as tmp_file:
-                                    fig.savefig(tmp_file.name, dpi=100, bbox_inches="tight")
-                                    files_to_upload.append((tmp_file.name, remote_path, True))
+                                    fig.savefig(
+                                        tmp_file.name, dpi=100, bbox_inches="tight"
+                                    )
+                                    files_to_upload.append(
+                                        (tmp_file.name, remote_path, True)
+                                    )
 
                                 plt.close(fig)
 

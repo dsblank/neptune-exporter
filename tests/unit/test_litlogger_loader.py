@@ -274,16 +274,18 @@ class TestExtractParametersAsMetadata:
         """Test extracting float parameter."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/learning_rate"],
-            "attribute_type": ["float"],
-            "float_value": [0.001],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/learning_rate"],
+                "attribute_type": ["float"],
+                "float_value": [0.001],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -294,16 +296,18 @@ class TestExtractParametersAsMetadata:
         """Test extracting int parameter."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/batch_size"],
-            "attribute_type": ["int"],
-            "float_value": [None],
-            "int_value": [32],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/batch_size"],
+                "attribute_type": ["int"],
+                "float_value": [None],
+                "int_value": [32],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -314,16 +318,18 @@ class TestExtractParametersAsMetadata:
         """Test extracting string parameter."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/model_name"],
-            "attribute_type": ["string"],
-            "float_value": [None],
-            "int_value": [None],
-            "string_value": ["resnet50"],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/model_name"],
+                "attribute_type": ["string"],
+                "float_value": [None],
+                "int_value": [None],
+                "string_value": ["resnet50"],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -334,16 +340,18 @@ class TestExtractParametersAsMetadata:
         """Test extracting bool parameter."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/use_gpu"],
-            "attribute_type": ["bool"],
-            "float_value": [None],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [True],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/use_gpu"],
+                "attribute_type": ["bool"],
+                "float_value": [None],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [True],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -354,16 +362,18 @@ class TestExtractParametersAsMetadata:
         """Test extracting string_set parameter."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/tags"],
-            "attribute_type": ["string_set"],
-            "float_value": [None],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [["tag1", "tag2", "tag3"]],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/tags"],
+                "attribute_type": ["string_set"],
+                "float_value": [None],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [["tag1", "tag2", "tag3"]],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -374,16 +384,18 @@ class TestExtractParametersAsMetadata:
         """Test extracting from empty dataframe."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": [],
-            "attribute_type": [],
-            "float_value": [],
-            "int_value": [],
-            "string_value": [],
-            "bool_value": [],
-            "datetime_value": [],
-            "string_set_value": [],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": [],
+                "attribute_type": [],
+                "float_value": [],
+                "int_value": [],
+                "string_value": [],
+                "bool_value": [],
+                "datetime_value": [],
+                "string_set_value": [],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -398,16 +410,18 @@ class TestUploadParameters:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr", "param/epochs"],
-            "attribute_type": ["float", "int"],
-            "float_value": [0.001, None],
-            "int_value": [None, 100],
-            "string_value": [None, None],
-            "bool_value": [None, None],
-            "datetime_value": [None, None],
-            "string_set_value": [None, None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr", "param/epochs"],
+                "attribute_type": ["float", "int"],
+                "float_value": [0.001, None],
+                "int_value": [None, 100],
+                "string_value": [None, None],
+                "bool_value": [None, None],
+                "datetime_value": [None, None],
+                "string_set_value": [None, None],
+            }
+        )
 
         loader.upload_parameters(run_df, "run-123")
 
@@ -425,16 +439,18 @@ class TestUploadParameters:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/use_gpu"],
-            "attribute_type": ["bool"],
-            "float_value": [None],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [True],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/use_gpu"],
+                "attribute_type": ["bool"],
+                "float_value": [None],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [True],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         loader.upload_parameters(run_df, "run-123")
 
@@ -449,16 +465,18 @@ class TestUploadParameters:
         loader = LitLoggerLoader()
         loader._active_experiment = None
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr"],
-            "attribute_type": ["float"],
-            "float_value": [0.001],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr"],
+                "attribute_type": ["float"],
+                "float_value": [0.001],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         with pytest.raises(RuntimeError, match="No active experiment"):
             loader.upload_parameters(run_df, "run-123")
@@ -472,12 +490,14 @@ class TestUploadMetrics:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["metrics/loss", "metrics/loss", "metrics/accuracy"],
-            "attribute_type": ["float_series", "float_series", "float_series"],
-            "step": [Decimal("1.0"), Decimal("2.0"), Decimal("1.0")],
-            "float_value": [0.5, 0.3, 0.8],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["metrics/loss", "metrics/loss", "metrics/accuracy"],
+                "attribute_type": ["float_series", "float_series", "float_series"],
+                "step": [Decimal("1.0"), Decimal("2.0"), Decimal("1.0")],
+                "float_value": [0.5, 0.3, 0.8],
+            }
+        )
 
         loader.upload_metrics(run_df, "run-123", step_multiplier=100)
 
@@ -494,12 +514,14 @@ class TestUploadMetrics:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr"],
-            "attribute_type": ["float"],
-            "step": [None],
-            "float_value": [0.001],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr"],
+                "attribute_type": ["float"],
+                "step": [None],
+                "float_value": [0.001],
+            }
+        )
 
         loader.upload_metrics(run_df, "run-123", step_multiplier=100)
 
@@ -510,12 +532,14 @@ class TestUploadMetrics:
         loader = LitLoggerLoader()
         loader._active_experiment = None
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["metrics/loss"],
-            "attribute_type": ["float_series"],
-            "step": [Decimal("1.0")],
-            "float_value": [0.5],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["metrics/loss"],
+                "attribute_type": ["float_series"],
+                "step": [Decimal("1.0")],
+                "float_value": [0.5],
+            }
+        )
 
         with pytest.raises(RuntimeError, match="No active experiment"):
             loader.upload_metrics(run_df, "run-123", step_multiplier=100)
@@ -534,11 +558,13 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["files/model.pt", "files/config.yaml"],
-            "attribute_type": ["file", "file"],
-            "file_value": [{"path": "model.pt"}, {"path": "config.yaml"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["files/model.pt", "files/config.yaml"],
+                "attribute_type": ["file", "file"],
+                "file_value": [{"path": "model.pt"}, {"path": "config.yaml"}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Create test files
@@ -547,7 +573,9 @@ class TestUploadArtifacts:
             model_file.write_text("model content")
             config_file.write_text("config content")
 
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -570,20 +598,32 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["finetuning/model.pt"],
-            "attribute_type": ["file"],
-            "file_value": [{"path": "showcase/onboarding-project/IMG-177/finetuning/model.pt"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["finetuning/model.pt"],
+                "attribute_type": ["file"],
+                "file_value": [
+                    {"path": "showcase/onboarding-project/IMG-177/finetuning/model.pt"}
+                ],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Create nested directory structure matching Neptune export
-            nested_dir = Path(tmpdir) / "showcase" / "onboarding-project" / "IMG-177" / "finetuning"
+            nested_dir = (
+                Path(tmpdir)
+                / "showcase"
+                / "onboarding-project"
+                / "IMG-177"
+                / "finetuning"
+            )
             nested_dir.mkdir(parents=True)
             model_file = nested_dir / "model.pt"
             model_file.write_text("model content")
 
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -603,15 +643,19 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["files/missing.pt"],
-            "attribute_type": ["file"],
-            "file_value": [{"path": "missing.pt"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["files/missing.pt"],
+                "attribute_type": ["file"],
+                "file_value": [{"path": "missing.pt"}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             with patch.object(loader._logger, "warning") as mock_warning:
-                loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+                loader.upload_artifacts(
+                    run_df, "run-123", Path(tmpdir), step_multiplier=100
+                )
 
                 mock_warning.assert_called_once()
                 assert "not found" in mock_warning.call_args[0][0].lower()
@@ -626,18 +670,22 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["logs/output", "logs/output"],
-            "attribute_type": ["string_series", "string_series"],
-            "step": [Decimal("1.0"), Decimal("2.0")],
-            "timestamp": [pd.Timestamp("2023-01-01"), pd.Timestamp("2023-01-02")],
-            "string_value": ["line 1", "line 2"],
-            "file_value": [None, None],
-            "histogram_value": [None, None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["logs/output", "logs/output"],
+                "attribute_type": ["string_series", "string_series"],
+                "step": [Decimal("1.0"), Decimal("2.0")],
+                "timestamp": [pd.Timestamp("2023-01-01"), pd.Timestamp("2023-01-02")],
+                "string_value": ["line 1", "line 2"],
+                "file_value": [None, None],
+                "histogram_value": [None, None],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -653,14 +701,18 @@ class TestUploadArtifacts:
         loader = LitLoggerLoader()
         loader._active_experiment = None
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["files/model.pt"],
-            "attribute_type": ["file"],
-            "file_value": [{"path": "model.pt"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["files/model.pt"],
+                "attribute_type": ["file"],
+                "file_value": [{"path": "model.pt"}],
+            }
+        )
 
         with pytest.raises(RuntimeError, match="No active experiment"):
-            loader.upload_artifacts(run_df, "run-123", Path("/tmp"), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path("/tmp"), step_multiplier=100
+            )
 
     def test_upload_directory_artifacts(self):
         """Test uploading directory artifacts preserves structure."""
@@ -672,11 +724,13 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["artifacts/checkpoint"],
-            "attribute_type": ["file_set"],
-            "file_value": [{"path": "checkpoint_dir"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["artifacts/checkpoint"],
+                "attribute_type": ["file_set"],
+                "file_value": [{"path": "checkpoint_dir"}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Create a directory with files
@@ -685,7 +739,9 @@ class TestUploadArtifacts:
             (checkpoint_dir / "model.bin").write_text("model data")
             (checkpoint_dir / "config.json").write_text("{}")
 
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -705,19 +761,23 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["images/step1", "images/step2"],
-            "attribute_type": ["file_series", "file_series"],
-            "step": [Decimal("1.0"), Decimal("2.0")],
-            "file_value": [{"path": "img1.png"}, {"path": "img2.png"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["images/step1", "images/step2"],
+                "attribute_type": ["file_series", "file_series"],
+                "step": [Decimal("1.0"), Decimal("2.0")],
+                "file_value": [{"path": "img1.png"}, {"path": "img2.png"}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Create test files
             (Path(tmpdir) / "img1.png").write_text("image1 content")
             (Path(tmpdir) / "img2.png").write_text("image2 content")
 
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -739,16 +799,20 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["images/step1"],
-            "attribute_type": ["file_series"],
-            "step": [Decimal("1.0")],
-            "file_value": [{"path": "missing.png"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["images/step1"],
+                "attribute_type": ["file_series"],
+                "step": [Decimal("1.0")],
+                "file_value": [{"path": "missing.png"}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             with patch.object(loader._logger, "warning") as mock_warning:
-                loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+                loader.upload_artifacts(
+                    run_df, "run-123", Path(tmpdir), step_multiplier=100
+                )
 
                 mock_warning.assert_called_once()
                 assert "not found" in mock_warning.call_args[0][0].lower()
@@ -763,16 +827,20 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["artifacts/model"],
-            "attribute_type": ["artifact"],
-            "file_value": [{"path": "model.pkl"}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["artifacts/model"],
+                "attribute_type": ["artifact"],
+                "file_value": [{"path": "model.pkl"}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             (Path(tmpdir) / "model.pkl").write_text("model content")
 
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -791,18 +859,24 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["histograms/weights"],
-            "attribute_type": ["histogram_series"],
-            "step": [Decimal("1.0")],
-            "timestamp": [pd.Timestamp("2023-01-01")],
-            "string_value": [None],
-            "file_value": [None],
-            "histogram_value": [{"edges": [0.0, 1.0, 2.0, 3.0], "values": [10, 20, 15]}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["histograms/weights"],
+                "attribute_type": ["histogram_series"],
+                "step": [Decimal("1.0")],
+                "timestamp": [pd.Timestamp("2023-01-01")],
+                "string_value": [None],
+                "file_value": [None],
+                "histogram_value": [
+                    {"edges": [0.0, 1.0, 2.0, 3.0], "values": [10, 20, 15]}
+                ],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -822,24 +896,32 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["histograms/weights"],
-            "attribute_type": ["histogram_series"],
-            "step": [None],
-            "timestamp": [None],
-            "string_value": [None],
-            "file_value": [None],
-            "histogram_value": [{"edges": [0.0, 1.0, 2.0], "values": [5, 10]}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["histograms/weights"],
+                "attribute_type": ["histogram_series"],
+                "step": [None],
+                "timestamp": [None],
+                "string_value": [None],
+                "file_value": [None],
+                "histogram_value": [{"edges": [0.0, 1.0, 2.0], "values": [5, 10]}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
             remote_paths = call_args[1]["remote_paths"]
 
-            assert "stepnone" in remote_paths[0] or "step_none" in remote_paths[0] or "none" in remote_paths[0]
+            assert (
+                "stepnone" in remote_paths[0]
+                or "step_none" in remote_paths[0]
+                or "none" in remote_paths[0]
+            )
 
     def test_upload_histogram_series_no_matplotlib(self):
         """Test histogram_series logs warning when matplotlib not available."""
@@ -851,19 +933,22 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["histograms/weights"],
-            "attribute_type": ["histogram_series"],
-            "step": [Decimal("1.0")],
-            "timestamp": [None],
-            "string_value": [None],
-            "file_value": [None],
-            "histogram_value": [{"edges": [0.0, 1.0, 2.0], "values": [5, 10]}],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["histograms/weights"],
+                "attribute_type": ["histogram_series"],
+                "step": [Decimal("1.0")],
+                "timestamp": [None],
+                "string_value": [None],
+                "file_value": [None],
+                "histogram_value": [{"edges": [0.0, 1.0, 2.0], "values": [5, 10]}],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Mock matplotlib import to raise ImportError
             import builtins
+
             real_import = builtins.__import__
 
             def mock_import(name, *args, **kwargs):
@@ -873,7 +958,9 @@ class TestUploadArtifacts:
 
             with patch.object(loader._logger, "warning") as mock_warning:
                 with patch.object(builtins, "__import__", mock_import):
-                    loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+                    loader.upload_artifacts(
+                        run_df, "run-123", Path(tmpdir), step_multiplier=100
+                    )
 
                 mock_warning.assert_called_once()
                 assert "matplotlib" in mock_warning.call_args[0][0].lower()
@@ -889,19 +976,23 @@ class TestUploadArtifacts:
         }
 
         # DataFrame with only float_series (metrics), no artifacts
-        run_df = pd.DataFrame({
-            "attribute_path": ["metrics/loss"],
-            "attribute_type": ["float_series"],
-            "step": [Decimal("1.0")],
-            "float_value": [0.5],
-            "file_value": [None],
-            "histogram_value": [None],
-            "string_value": [None],
-            "timestamp": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["metrics/loss"],
+                "attribute_type": ["float_series"],
+                "step": [Decimal("1.0")],
+                "float_value": [0.5],
+                "file_value": [None],
+                "histogram_value": [None],
+                "string_value": [None],
+                "timestamp": [None],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             # log_files should not be called when there are no files
             loader._active_experiment.log_files.assert_not_called()
@@ -916,16 +1007,20 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["files/model.pt", "files/missing"],
-            "attribute_type": ["file", "file"],
-            "file_value": [{"path": "model.pt"}, None],  # Second has NaN
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["files/model.pt", "files/missing"],
+                "attribute_type": ["file", "file"],
+                "file_value": [{"path": "model.pt"}, None],  # Second has NaN
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             (Path(tmpdir) / "model.pt").write_text("model content")
 
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -944,16 +1039,23 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["files/model.pt", "files/invalid"],
-            "attribute_type": ["file", "file"],
-            "file_value": [{"path": "model.pt"}, "not_a_dict"],  # Second is not a dict
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["files/model.pt", "files/invalid"],
+                "attribute_type": ["file", "file"],
+                "file_value": [
+                    {"path": "model.pt"},
+                    "not_a_dict",
+                ],  # Second is not a dict
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             (Path(tmpdir) / "model.pt").write_text("model content")
 
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             loader._active_experiment.log_files.assert_called_once()
             call_args = loader._active_experiment.log_files.call_args
@@ -972,18 +1074,22 @@ class TestUploadArtifacts:
             "experiment_name": "test",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["logs/output"],
-            "attribute_type": ["string_series"],
-            "step": [Decimal("1.0")],
-            "timestamp": [pd.Timestamp("2023-01-01")],
-            "string_value": ["log line"],
-            "file_value": [None],
-            "histogram_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["logs/output"],
+                "attribute_type": ["string_series"],
+                "step": [Decimal("1.0")],
+                "timestamp": [pd.Timestamp("2023-01-01")],
+                "string_value": ["log line"],
+                "file_value": [None],
+                "histogram_value": [None],
+            }
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            loader.upload_artifacts(run_df, "run-123", Path(tmpdir), step_multiplier=100)
+            loader.upload_artifacts(
+                run_df, "run-123", Path(tmpdir), step_multiplier=100
+            )
 
             # Get the temp file path that was passed to log_files
             call_args = loader._active_experiment.log_files.call_args
@@ -991,7 +1097,9 @@ class TestUploadArtifacts:
 
             # Verify temp file was cleaned up
             for temp_path in temp_file_paths:
-                assert not Path(temp_path).exists(), f"Temp file {temp_path} should have been deleted"
+                assert not Path(temp_path).exists(), (
+                    f"Temp file {temp_path} should have been deleted"
+                )
 
 
 class TestUploadRunData:
@@ -1001,6 +1109,7 @@ class TestUploadRunData:
     def test_upload_run_data_basic(self):
         """Test basic run data upload."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1011,20 +1120,22 @@ class TestUploadRunData:
         loader.create_run("project-id", "run-name")
 
         # Create test data
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr", "metrics/loss"],
-            "attribute_type": ["float", "float_series"],
-            "step": [None, Decimal("1.0")],
-            "float_value": [0.001, 0.5],
-            "int_value": [None, None],
-            "string_value": [None, None],
-            "bool_value": [None, None],
-            "datetime_value": [None, None],
-            "string_set_value": [None, None],
-            "file_value": [None, None],
-            "histogram_value": [None, None],
-            "timestamp": [None, pd.Timestamp("2023-01-01")],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr", "metrics/loss"],
+                "attribute_type": ["float", "float_series"],
+                "step": [None, Decimal("1.0")],
+                "float_value": [0.001, 0.5],
+                "int_value": [None, None],
+                "string_value": [None, None],
+                "bool_value": [None, None],
+                "datetime_value": [None, None],
+                "string_set_value": [None, None],
+                "file_value": [None, None],
+                "histogram_value": [None, None],
+                "timestamp": [None, pd.Timestamp("2023-01-01")],
+            }
+        )
 
         # Convert to PyArrow table
         table = pa.Table.from_pandas(run_df)
@@ -1052,10 +1163,12 @@ class TestUploadRunData:
         """Test upload_run_data raises if run not prepared."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["metrics/loss"],
-            "attribute_type": ["float_series"],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["metrics/loss"],
+                "attribute_type": ["float_series"],
+            }
+        )
         table = pa.Table.from_pandas(run_df)
 
         def table_generator():
@@ -1073,6 +1186,7 @@ class TestUploadRunData:
     def test_upload_run_data_handles_error(self):
         """Test upload_run_data handles errors and finalizes experiment."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1082,20 +1196,22 @@ class TestUploadRunData:
         loader = LitLoggerLoader(teamspace="test-teamspace")
         loader.create_run("project-id", "run-name")
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["metrics/loss"],
-            "attribute_type": ["float_series"],
-            "step": [Decimal("1.0")],
-            "float_value": [0.5],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [None],
-            "file_value": [None],
-            "histogram_value": [None],
-            "timestamp": [pd.Timestamp("2023-01-01")],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["metrics/loss"],
+                "attribute_type": ["float_series"],
+                "step": [Decimal("1.0")],
+                "float_value": [0.5],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [None],
+                "file_value": [None],
+                "histogram_value": [None],
+                "timestamp": [pd.Timestamp("2023-01-01")],
+            }
+        )
 
         table = pa.Table.from_pandas(run_df)
 
@@ -1122,11 +1238,18 @@ class TestLogMetricsBatch:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        metrics_data = pd.DataFrame({
-            "attribute_path": ["loss", "loss", "loss", "accuracy"],
-            "step": [Decimal("1.0"), Decimal("2.0"), Decimal("3.0"), Decimal("1.0")],
-            "float_value": [0.9, 0.7, 0.5, 0.6],
-        })
+        metrics_data = pd.DataFrame(
+            {
+                "attribute_path": ["loss", "loss", "loss", "accuracy"],
+                "step": [
+                    Decimal("1.0"),
+                    Decimal("2.0"),
+                    Decimal("3.0"),
+                    Decimal("1.0"),
+                ],
+                "float_value": [0.9, 0.7, 0.5, 0.6],
+            }
+        )
 
         loader._log_metrics_batch(metrics_data, step_multiplier=100)
 
@@ -1146,11 +1269,13 @@ class TestLogMetricsBatch:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        metrics_data = pd.DataFrame({
-            "attribute_path": ["loss", "loss"],
-            "step": [Decimal("1.0"), Decimal("2.0")],
-            "float_value": [0.9, float("nan")],
-        })
+        metrics_data = pd.DataFrame(
+            {
+                "attribute_path": ["loss", "loss"],
+                "step": [Decimal("1.0"), Decimal("2.0")],
+                "float_value": [0.9, float("nan")],
+            }
+        )
 
         loader._log_metrics_batch(metrics_data, step_multiplier=100)
 
@@ -1165,11 +1290,13 @@ class TestLogMetricsBatch:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        metrics_data = pd.DataFrame({
-            "attribute_path": ["loss", "loss"],
-            "step": [Decimal("1.0"), None],
-            "float_value": [0.9, 0.5],
-        })
+        metrics_data = pd.DataFrame(
+            {
+                "attribute_path": ["loss", "loss"],
+                "step": [Decimal("1.0"), None],
+                "float_value": [0.9, 0.5],
+            }
+        )
 
         loader._log_metrics_batch(metrics_data, step_multiplier=100)
 
@@ -1184,11 +1311,13 @@ class TestLogMetricsBatch:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        metrics_data = pd.DataFrame({
-            "attribute_path": ["loss"],
-            "step": [None],
-            "float_value": [float("nan")],
-        })
+        metrics_data = pd.DataFrame(
+            {
+                "attribute_path": ["loss"],
+                "step": [None],
+                "float_value": [float("nan")],
+            }
+        )
 
         loader._log_metrics_batch(metrics_data, step_multiplier=100)
 
@@ -1200,11 +1329,13 @@ class TestLogMetricsBatch:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        metrics_data = pd.DataFrame({
-            "attribute_path": ["loss", "accuracy", "f1_score"],
-            "step": [Decimal("1.0"), Decimal("1.0"), Decimal("1.0")],
-            "float_value": [0.5, 0.8, 0.75],
-        })
+        metrics_data = pd.DataFrame(
+            {
+                "attribute_path": ["loss", "accuracy", "f1_score"],
+                "step": [Decimal("1.0"), Decimal("1.0"), Decimal("1.0")],
+                "float_value": [0.5, 0.8, 0.75],
+            }
+        )
 
         loader._log_metrics_batch(metrics_data, step_multiplier=100)
 
@@ -1223,16 +1354,18 @@ class TestExtractParametersDatetime:
         """Test extracting datetime parameter."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/created_at"],
-            "attribute_type": ["datetime"],
-            "float_value": [None],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [pd.Timestamp("2023-06-15 10:30:00")],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/created_at"],
+                "attribute_type": ["datetime"],
+                "float_value": [None],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [pd.Timestamp("2023-06-15 10:30:00")],
+                "string_set_value": [None],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -1243,16 +1376,18 @@ class TestExtractParametersDatetime:
         """Test extracting params skips rows with NaN values."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr", "param/missing"],
-            "attribute_type": ["float", "float"],
-            "float_value": [0.001, float("nan")],
-            "int_value": [None, None],
-            "string_value": [None, None],
-            "bool_value": [None, None],
-            "datetime_value": [None, None],
-            "string_set_value": [None, None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr", "param/missing"],
+                "attribute_type": ["float", "float"],
+                "float_value": [0.001, float("nan")],
+                "int_value": [None, None],
+                "string_value": [None, None],
+                "bool_value": [None, None],
+                "datetime_value": [None, None],
+                "string_set_value": [None, None],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -1263,16 +1398,23 @@ class TestExtractParametersDatetime:
         """Test extracting multiple parameter types at once."""
         loader = LitLoggerLoader()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr", "param/epochs", "param/name", "param/debug"],
-            "attribute_type": ["float", "int", "string", "bool"],
-            "float_value": [0.001, None, None, None],
-            "int_value": [None, 100, None, None],
-            "string_value": [None, None, "my_model", None],
-            "bool_value": [None, None, None, False],
-            "datetime_value": [None, None, None, None],
-            "string_set_value": [None, None, None, None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": [
+                    "param/lr",
+                    "param/epochs",
+                    "param/name",
+                    "param/debug",
+                ],
+                "attribute_type": ["float", "int", "string", "bool"],
+                "float_value": [0.001, None, None, None],
+                "int_value": [None, 100, None, None],
+                "string_value": [None, None, "my_model", None],
+                "bool_value": [None, None, None, False],
+                "datetime_value": [None, None, None, None],
+                "string_set_value": [None, None, None, None],
+            }
+        )
 
         metadata = loader._extract_parameters_as_metadata(run_df)
 
@@ -1291,16 +1433,18 @@ class TestUploadParametersExtended:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": [],
-            "attribute_type": [],
-            "float_value": [],
-            "int_value": [],
-            "string_value": [],
-            "bool_value": [],
-            "datetime_value": [],
-            "string_set_value": [],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": [],
+                "attribute_type": [],
+                "float_value": [],
+                "int_value": [],
+                "string_value": [],
+                "bool_value": [],
+                "datetime_value": [],
+                "string_set_value": [],
+            }
+        )
 
         loader.upload_parameters(run_df, "run-123")
 
@@ -1312,16 +1456,18 @@ class TestUploadParametersExtended:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/debug"],
-            "attribute_type": ["bool"],
-            "float_value": [None],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [False],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/debug"],
+                "attribute_type": ["bool"],
+                "float_value": [None],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [False],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         loader.upload_parameters(run_df, "run-123")
 
@@ -1335,16 +1481,18 @@ class TestUploadParametersExtended:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/name", "param/created", "param/tags"],
-            "attribute_type": ["string", "datetime", "string_set"],
-            "float_value": [None, None, None],
-            "int_value": [None, None, None],
-            "string_value": ["model_name", None, None],
-            "bool_value": [None, None, None],
-            "datetime_value": [None, pd.Timestamp("2023-01-01"), None],
-            "string_set_value": [None, None, ["tag1", "tag2"]],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/name", "param/created", "param/tags"],
+                "attribute_type": ["string", "datetime", "string_set"],
+                "float_value": [None, None, None],
+                "int_value": [None, None, None],
+                "string_value": ["model_name", None, None],
+                "bool_value": [None, None, None],
+                "datetime_value": [None, pd.Timestamp("2023-01-01"), None],
+                "string_set_value": [None, None, ["tag1", "tag2"]],
+            }
+        )
 
         loader.upload_parameters(run_df, "run-123")
 
@@ -1356,16 +1504,18 @@ class TestUploadParametersExtended:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr", "param/name", "param/epochs"],
-            "attribute_type": ["float", "string", "int"],
-            "float_value": [0.001, None, None],
-            "int_value": [None, None, 50],
-            "string_value": [None, "model", None],
-            "bool_value": [None, None, None],
-            "datetime_value": [None, None, None],
-            "string_set_value": [None, None, None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr", "param/name", "param/epochs"],
+                "attribute_type": ["float", "string", "int"],
+                "float_value": [0.001, None, None],
+                "int_value": [None, None, 50],
+                "string_value": [None, "model", None],
+                "bool_value": [None, None, None],
+                "datetime_value": [None, None, None],
+                "string_set_value": [None, None, None],
+            }
+        )
 
         loader.upload_parameters(run_df, "run-123")
 
@@ -1383,16 +1533,18 @@ class TestUploadParametersExtended:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr"],
-            "attribute_type": ["float"],
-            "float_value": [0.001],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr"],
+                "attribute_type": ["float"],
+                "float_value": [0.001],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [None],
+            }
+        )
 
         loader.upload_parameters(run_df, "run-123")
 
@@ -1407,6 +1559,7 @@ class TestCreateExperimentWithParams:
     def test_create_experiment_includes_neptune_info(self):
         """Test experiment metadata includes Neptune project and run info."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1418,16 +1571,18 @@ class TestCreateExperimentWithParams:
             "run_name": "RUN-42",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": [],
-            "attribute_type": [],
-            "float_value": [],
-            "int_value": [],
-            "string_value": [],
-            "bool_value": [],
-            "datetime_value": [],
-            "string_set_value": [],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": [],
+                "attribute_type": [],
+                "float_value": [],
+                "int_value": [],
+                "string_value": [],
+                "bool_value": [],
+                "datetime_value": [],
+                "string_set_value": [],
+            }
+        )
 
         loader._create_experiment_with_params(run_df)
 
@@ -1441,6 +1596,7 @@ class TestCreateExperimentWithParams:
     def test_create_experiment_with_params_in_metadata(self):
         """Test parameters are included in experiment metadata."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1452,16 +1608,18 @@ class TestCreateExperimentWithParams:
             "run_name": "run",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr", "param/epochs"],
-            "attribute_type": ["float", "int"],
-            "float_value": [0.001, None],
-            "int_value": [None, 100],
-            "string_value": [None, None],
-            "bool_value": [None, None],
-            "datetime_value": [None, None],
-            "string_set_value": [None, None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr", "param/epochs"],
+                "attribute_type": ["float", "int"],
+                "float_value": [0.001, None],
+                "int_value": [None, 100],
+                "string_value": [None, None],
+                "bool_value": [None, None],
+                "datetime_value": [None, None],
+                "string_set_value": [None, None],
+            }
+        )
 
         loader._create_experiment_with_params(run_df)
 
@@ -1478,10 +1636,12 @@ class TestCreateExperimentWithParams:
         loader = LitLoggerLoader()
         loader._pending_experiment = None
 
-        run_df = pd.DataFrame({
-            "attribute_path": [],
-            "attribute_type": [],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": [],
+                "attribute_type": [],
+            }
+        )
 
         with pytest.raises(RuntimeError, match="No pending experiment"):
             loader._create_experiment_with_params(run_df)
@@ -1490,6 +1650,7 @@ class TestCreateExperimentWithParams:
     def test_create_experiment_sets_correct_options(self):
         """Test litlogger.init is called with correct options."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1501,16 +1662,18 @@ class TestCreateExperimentWithParams:
             "run_name": "run",
         }
 
-        run_df = pd.DataFrame({
-            "attribute_path": [],
-            "attribute_type": [],
-            "float_value": [],
-            "int_value": [],
-            "string_value": [],
-            "bool_value": [],
-            "datetime_value": [],
-            "string_set_value": [],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": [],
+                "attribute_type": [],
+                "float_value": [],
+                "int_value": [],
+                "string_value": [],
+                "bool_value": [],
+                "datetime_value": [],
+                "string_set_value": [],
+            }
+        )
 
         loader._create_experiment_with_params(run_df)
 
@@ -1530,6 +1693,7 @@ class TestUploadRunDataExtended:
     def test_upload_run_data_multiple_chunks(self):
         """Test upload_run_data processes multiple data chunks."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1538,35 +1702,39 @@ class TestUploadRunDataExtended:
         loader.create_run("project-id", "run-name")
 
         # Create two chunks of data
-        chunk1 = pd.DataFrame({
-            "attribute_path": ["param/lr", "metrics/loss"],
-            "attribute_type": ["float", "float_series"],
-            "step": [None, Decimal("1.0")],
-            "float_value": [0.001, 0.9],
-            "int_value": [None, None],
-            "string_value": [None, None],
-            "bool_value": [None, None],
-            "datetime_value": [None, None],
-            "string_set_value": [None, None],
-            "file_value": [None, None],
-            "histogram_value": [None, None],
-            "timestamp": [None, pd.Timestamp("2023-01-01")],
-        })
+        chunk1 = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr", "metrics/loss"],
+                "attribute_type": ["float", "float_series"],
+                "step": [None, Decimal("1.0")],
+                "float_value": [0.001, 0.9],
+                "int_value": [None, None],
+                "string_value": [None, None],
+                "bool_value": [None, None],
+                "datetime_value": [None, None],
+                "string_set_value": [None, None],
+                "file_value": [None, None],
+                "histogram_value": [None, None],
+                "timestamp": [None, pd.Timestamp("2023-01-01")],
+            }
+        )
 
-        chunk2 = pd.DataFrame({
-            "attribute_path": ["metrics/loss", "metrics/loss"],
-            "attribute_type": ["float_series", "float_series"],
-            "step": [Decimal("2.0"), Decimal("3.0")],
-            "float_value": [0.7, 0.5],
-            "int_value": [None, None],
-            "string_value": [None, None],
-            "bool_value": [None, None],
-            "datetime_value": [None, None],
-            "string_set_value": [None, None],
-            "file_value": [None, None],
-            "histogram_value": [None, None],
-            "timestamp": [pd.Timestamp("2023-01-02"), pd.Timestamp("2023-01-03")],
-        })
+        chunk2 = pd.DataFrame(
+            {
+                "attribute_path": ["metrics/loss", "metrics/loss"],
+                "attribute_type": ["float_series", "float_series"],
+                "step": [Decimal("2.0"), Decimal("3.0")],
+                "float_value": [0.7, 0.5],
+                "int_value": [None, None],
+                "string_value": [None, None],
+                "bool_value": [None, None],
+                "datetime_value": [None, None],
+                "string_set_value": [None, None],
+                "file_value": [None, None],
+                "histogram_value": [None, None],
+                "timestamp": [pd.Timestamp("2023-01-02"), pd.Timestamp("2023-01-03")],
+            }
+        )
 
         table1 = pa.Table.from_pandas(chunk1)
         table2 = pa.Table.from_pandas(chunk2)
@@ -1595,6 +1763,7 @@ class TestUploadRunDataExtended:
     def test_upload_run_data_cleans_up_state(self):
         """Test upload_run_data cleans up state after successful upload."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1602,20 +1771,22 @@ class TestUploadRunDataExtended:
         loader = LitLoggerLoader(teamspace="test-teamspace")
         loader.create_run("project-id", "run-name")
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr"],
-            "attribute_type": ["float"],
-            "step": [None],
-            "float_value": [0.001],
-            "int_value": [None],
-            "string_value": [None],
-            "bool_value": [None],
-            "datetime_value": [None],
-            "string_set_value": [None],
-            "file_value": [None],
-            "histogram_value": [None],
-            "timestamp": [None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr"],
+                "attribute_type": ["float"],
+                "step": [None],
+                "float_value": [0.001],
+                "int_value": [None],
+                "string_value": [None],
+                "bool_value": [None],
+                "datetime_value": [None],
+                "string_set_value": [None],
+                "file_value": [None],
+                "histogram_value": [None],
+                "timestamp": [None],
+            }
+        )
 
         table = pa.Table.from_pandas(run_df)
 
@@ -1642,6 +1813,7 @@ class TestUploadRunDataExtended:
     def test_upload_run_data_wrong_run_id(self):
         """Test upload_run_data fails if run_id doesn't match current run."""
         import sys
+
         mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
@@ -1649,10 +1821,12 @@ class TestUploadRunDataExtended:
         loader = LitLoggerLoader(teamspace="test-teamspace")
         loader.create_run("project-id", "run-name")
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr"],
-            "attribute_type": ["float"],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr"],
+                "attribute_type": ["float"],
+            }
+        )
         table = pa.Table.from_pandas(run_df)
 
         def table_generator():
@@ -1714,12 +1888,14 @@ class TestUploadMetricsExtended:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["metrics/loss"],
-            "attribute_type": ["float_series"],
-            "step": [Decimal("1.5")],
-            "float_value": [0.5],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["metrics/loss"],
+                "attribute_type": ["float_series"],
+                "step": [Decimal("1.5")],
+                "float_value": [0.5],
+            }
+        )
 
         # Test with multiplier of 1000
         loader.upload_metrics(run_df, "run-123", step_multiplier=1000)
@@ -1732,12 +1908,14 @@ class TestUploadMetricsExtended:
         loader = LitLoggerLoader()
         loader._active_experiment = MagicMock()
 
-        run_df = pd.DataFrame({
-            "attribute_path": ["param/lr", "metrics/loss", "files/model"],
-            "attribute_type": ["float", "float_series", "file"],
-            "step": [None, Decimal("1.0"), None],
-            "float_value": [0.001, 0.5, None],
-        })
+        run_df = pd.DataFrame(
+            {
+                "attribute_path": ["param/lr", "metrics/loss", "files/model"],
+                "attribute_type": ["float", "float_series", "file"],
+                "step": [None, Decimal("1.0"), None],
+                "float_value": [0.001, 0.5, None],
+            }
+        )
 
         loader.upload_metrics(run_df, "run-123", step_multiplier=100)
 
