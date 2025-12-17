@@ -1105,12 +1105,9 @@ class TestUploadArtifacts:
 class TestUploadRunData:
     """Test complete run data upload."""
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_upload_run_data_basic(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_upload_run_data_basic(self, mock_litlogger):
         """Test basic run data upload."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
 
@@ -1182,12 +1179,9 @@ class TestUploadRunData:
                 step_multiplier=100,
             )
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_upload_run_data_handles_error(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_upload_run_data_handles_error(self, mock_litlogger):
         """Test upload_run_data handles errors and finalizes experiment."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
         # Make log_metrics_batch raise an error
@@ -1555,12 +1549,9 @@ class TestUploadParametersExtended:
 class TestCreateExperimentWithParams:
     """Test _create_experiment_with_params method."""
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_create_experiment_includes_neptune_info(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_create_experiment_includes_neptune_info(self, mock_litlogger):
         """Test experiment metadata includes Neptune project and run info."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
 
@@ -1592,12 +1583,9 @@ class TestCreateExperimentWithParams:
         assert metadata["neptune_project"] == "my-workspace/my-project"
         assert metadata["neptune_run"] == "RUN-42"
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_create_experiment_with_params_in_metadata(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_create_experiment_with_params_in_metadata(self, mock_litlogger):
         """Test parameters are included in experiment metadata."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
 
@@ -1646,12 +1634,9 @@ class TestCreateExperimentWithParams:
         with pytest.raises(RuntimeError, match="No pending experiment"):
             loader._create_experiment_with_params(run_df)
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_create_experiment_sets_correct_options(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_create_experiment_sets_correct_options(self, mock_litlogger):
         """Test litlogger.init is called with correct options."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
 
@@ -1689,12 +1674,9 @@ class TestCreateExperimentWithParams:
 class TestUploadRunDataExtended:
     """Extended tests for upload_run_data."""
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_upload_run_data_multiple_chunks(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_upload_run_data_multiple_chunks(self, mock_litlogger):
         """Test upload_run_data processes multiple data chunks."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
 
@@ -1759,12 +1741,9 @@ class TestUploadRunDataExtended:
         # Experiment should be finalized
         mock_experiment.finalize.assert_called_once()
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_upload_run_data_cleans_up_state(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_upload_run_data_cleans_up_state(self, mock_litlogger):
         """Test upload_run_data cleans up state after successful upload."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
 
@@ -1809,12 +1788,9 @@ class TestUploadRunDataExtended:
         assert loader._current_run_id is None
         assert loader._active_experiment is None
 
-    @patch.dict("sys.modules", {"litlogger": MagicMock()})
-    def test_upload_run_data_wrong_run_id(self):
+    @patch("neptune_exporter.loaders.litlogger_loader.litlogger")
+    def test_upload_run_data_wrong_run_id(self, mock_litlogger):
         """Test upload_run_data fails if run_id doesn't match current run."""
-        import sys
-
-        mock_litlogger = sys.modules["litlogger"]
         mock_experiment = MagicMock()
         mock_litlogger.init.return_value = mock_experiment
 
